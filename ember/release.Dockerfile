@@ -12,4 +12,5 @@ COPY . .
 RUN ember build --environment=production --output-path=/release
 
 FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /release /usr/share/nginx/html
